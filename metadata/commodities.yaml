@@ -1,811 +1,3 @@
-
-
-###############################################################################
-##                          - - -    Tables   - - -                          ##
-###############################################################################
-
-
-tables:
-  food:
-    code_range: {start: 10_000, end: 20_000}
-    default_duration_value: 30
-
-  tobacco:
-    code_range: {start: 20_000, end: 30_000}
-    default_duration_value: 30
-
-  cloth:
-    code_range: {start: _0_000, end: _0_000}
-    default_duration_value: 30
-
-  home:
-    code_range: {start: _0_000, end: _0_000}
-    default_duration_value: 30
-
-  furniture:
-    code_range: {start: _0_000, end: _0_000}
-    default_duration_value: 30
-
-  medical:
-    code_range: {start: _0_000, end: _0_000}
-    default_duration_value: 30
-
-  transportation:
-    code_range: {start: _0_000, end: _0_000}
-    default_duration_value: 30
-
-  communication:
-    code_range: {start: _0_000, end: _0_000}
-    default_duration_value: 30
-
-  entertainment:
-    code_range: {start: _0_000, end: _0_000}
-    default_duration_value: 30
-
-  education:
-    code_range: {start: _0_000, end: _0_000}
-    default_duration_value: 30
-
-  hotel:
-    code_range: {start: _0_000, end: _0_000}
-    default_duration_value: 30
-
-  other:
-    code_range: {start: _0_000, end: _0_000}
-    default_duration_value: 30
-
-  durable:
-    code_range: {start: _0_000, end: _0_000}
-    default_duration_value: 360
-
-  investment:
-    code_range: {start: _0_000, end: _0_000}
-    default_duration_value: 360
-
-
-
-###############################################################################
-##                 - - -    Original Classification   - - -                  ##
-###############################################################################
-
-
-################### - Original Classification Before 1383 - ###################
-
-
-ORIGINAL1363:
-  items: &ORIGINAL1363
-
-
-    #                        ######## LEVEL 1 ########                        #
-    food_beverages_and_tobacco:
-      level: 1
-      farsi_name: "مواد خوراکی، نوشیدنی‌ها و دخانیات"
-      categories:
-        1:
-          duration: 30
-          code:
-            - {start: 11_200, end: 11_300}
-            - {start: 14_000, end: 15_000}
-            - {start: 16_300, end: 16_400}
-            - {start: 17_100, end: 17_200}
-            - {start: 17_400, end: 17_500}
-            - {start: 18_000, end: 19_000}
-        2:
-          duration: 2
-          code:
-            - {start: 11_100, end: 11_200}
-            - {start: 11_300, end: 11_500}
-            - {start: 12_000, end: 14_000}
-            - {start: 15_000, end: 16_000}
-            - {start: 16_100, end: 16_300}
-            - {start: 17_200, end: 17_400}
-            - {start: 19_000, end: 20_000}
-        3:
-          drop: 1
-          code:
-            - 18888
-            - 19993
-            - {start: 911_00, end: 912_00}
-
-    #                            #### LEVEL 2 ####                            #
-    cereals_and_cereal_products:
-      level: 2
-      farsi_name: "غلات و فرآورده‌های آن"
-      categories:
-        1:
-          duration: 30
-          code:
-            - {start: 11_200, end: 11_300}
-        2:
-          duration: 2
-          code:
-            - {start: 11_100, end: 11_200}
-            - {start: 11_300, end: 11_500}
-
-    #                            #### LEVEL 2 ####                            #
-    meat_and_sea_foods:
-      level: 2
-      duration: 2
-      farsi_name: "گوشت"
-      code: {start: 12_000, end: 13_000}
-
-    #                            #### LEVEL 2 ####                            #
-    milk_other_dairy_product_and_eggs:
-      level: 2
-      duration: 2
-      farsi_name: "شیر و فرآورده‌های آن (به جز کره) و تخم پرندگان"
-      code: {start: 13_000, end: 14_000}
-
-    #                            #### LEVEL 2 ####                            #
-    oils_and_fats:
-      level: 2
-      duration: 30
-      farsi_name: "روغن‌ها و چربی‌ها"
-      code: {start: 14_000, end: 15_000}
-
-    #                            #### LEVEL 2 ####                            #
-    fruits_and_vegetables:
-      level: 2
-      duration: 2
-      farsi_name: "میوه‌ها و سبزیجات"
-      code: {start: 15_000, end: 16_000}
-
-    #                            #### LEVEL 2 ####                            #
-    nuts_and_pulses:
-      level: 2
-      farsi_name: "خشکبار، آجیل و حبوبات"
-      categories:
-        1:
-          duration: 30
-          code: {start: 16_300, end: 16_400}
-        2:
-          duration: 2
-          code: {start: 16_100, end: 16_300}
-
-    #                            #### LEVEL 2 ####                            #
-    sugar_confectionery_and_desserts_tea_coffee_and_cocoa_drinks:
-      level: 2
-      categories:
-        1:
-          duration: 30
-          code:
-            - {start: 17_100, end: 17_200}
-            - {start: 17_400, end: 17_500}
-        2:
-          duration: 2
-          code:
-            - {start: 17_200, end: 17_400}
-
-    #                            #### LEVEL 2 ####                            #
-    spices_condiments_and_other_food_products:
-      level: 2
-      duration: 30
-      farsi_name: "ادویه‌ها، چاشنی‌ها و سایر ترکیبات خوراکی"
-      code: {start: 18_000, end: 19_000}
-
-    #                            #### LEVEL 2 ####                            #
-    soft_drinks_prepared_foods_and_tobacco:
-      level: 2
-      duration: 2
-      farsi_name: "نوشابه‌ها، غذاهای آماده و دخانیات"
-      code: {start: 19_000, end: 20_000}
-
-
-
-################### - Original Classification After 1383 - ####################
-
-
-ORIGINAL1383:
-  defaults:
-    levels: [1, 2]
-
-  items: &ORIGINAL1383
-
-
-    #                ################ LEVEL 0 ################                #
-    food_and_non_alcoholic_beverages:
-      &original_1383_0_food_and_non_alcoholic_beverages
-      level: 0
-      farsi_name: "مواد خوراکی و نوشیدنی‌های غیر الکلی"
-      code: {start: 10_000, end: 20_000}
-
-
-    #                        ######## LEVEL 1 ########                        #
-    food:
-      level: 1
-      farsi_name: "مواد خوراکی"
-      code: {start: 11_000, end: 12_000}
-
-
-    #                            #### LEVEL 2 ####                            #
-    cereals_and_cereal_products:
-      level: 2
-      farsi_name: "غلات و فرآورده‌های آن"
-      code: {start: 11_100, end: 11_200}
-
-    #                              ## LEVEL 3 ##                              #
-    cereals:
-      level: 3
-      code: {start: 11_110, end: 11_130}
-
-    #                              ## LEVEL 3 ##                              #
-    bread_and_bakery_products:
-      level: 3
-      code: {start: 11_140, end: 11_160}
-
-    #                              ## LEVEL 3 ##                              #
-    flour_noodle_and_similar_pasta_products:
-      level: 3
-      code: {start: 11_160, end: 11_170}
-
-    #                              ## LEVEL 3 ##                              #
-    cake_and_biscuit:
-      level: 3
-      code: {start: 11_170, end: 11_180}
-
-
-    #                            #### LEVEL 2 ####                            #
-    meat:
-      level: 2
-      farsi_name: "گوشت"
-      code: {start: 11_200, end: 11_300}
-
-    #                              ## LEVEL 3 ##                              #
-    red_meat:
-      level: 3
-      code: {start: 11_210, end: 11_230}
-
-    #                              ## LEVEL 3 ##                              #
-    poultry:
-      level: 3
-      code: {start: 11_230, end: 11_240}
-
-    #                              ## LEVEL 3 ##                              #
-    ready_to_cook_meat:
-      level: 3
-      code: {start: 11_240, end: 11_250}
-
-
-    #                            #### LEVEL 2 ####                            #
-    fish_and_other_sea_foods:
-      level: 2
-      farsi_name: "ماهی، میگو و فرآورده‌های آن‌ها"
-      code: {start: 11_300, end: 11_400}
-
-    #                              ## LEVEL 3 ##                              #
-    _fish_and_other_sea_foods:
-      level: 3
-      farsi_name: "ماهی، میگو و فرآورده‌های آن‌ها"
-      code: {start: 11_310, end: 11_330}
-
-
-    #                            #### LEVEL 2 ####                            #
-    milk_other_dairy_product_excluding_butter_and_eggs:
-      level: 2
-      farsi_name: "شیر و فرآورده‌های آن (به جز کره) و تخم پرندگان"
-      code: {start: 11_400, end: 11_500}
-
-    #                              ## LEVEL 3 ##                              #
-    milk:
-      level: 3
-      code: {start: 11_410, end: 11_420}
-
-    #                               # LEVEL 4 #                               #
-    dried_milk:
-      level: 4
-      code: 11_413
-
-    #                              ## LEVEL 3 ##                              #
-    other_dairy_product_excluding_butter:
-      level: 3
-      code: {start: 11_420, end: 11_440}
-
-    #                              ## LEVEL 3 ##                              #
-    eggs:
-      level: 3
-      code: {start: 11_440, end: 11_450}
-
-
-    #                            #### LEVEL 2 ####                            #
-    oils_fats_and_butter:
-      level: 2
-      farsi_name: "روغن‌ها، چربی‌ها و کره"
-      code: {start: 11_500, end: 11_600}
-
-    #                              ## LEVEL 3 ##                              #
-    animal_oils_and_fats_excluding_butter:
-      level: 3
-      code: {start: 11_510, end: 11_520}
-
-    #                              ## LEVEL 3 ##                              #
-    butter:
-      level: 3
-      code: {start: 11_520, end: 11_530}
-
-    #                              ## LEVEL 3 ##                              #
-    vegetable_oils:
-      level: 3
-      code: {start: 11_530, end: 11_540}
-
-
-    #                            #### LEVEL 2 ####                            #
-    fruits_and_nuts:
-      level: 2
-      farsi_name: "میوه‌ها و خشکبار"
-      code: {start: 11_600, end: 11_700}
-
-    #                              ## LEVEL 3 ##                              #
-    tree_fruits:
-      level: 3
-      code: {start: 11_610, end: 11_640}
-
-    #                              ## LEVEL 3 ##                              #
-    cucurbit_fruits:
-      level: 3
-      code: {start: 11_640, end: 11_650}
-
-    #                              ## LEVEL 3 ##                              #
-    nuts:
-      level: 3
-      code: {start: 11_650, end: 11_670}
-
-
-    #                            #### LEVEL 2 ####                            #
-    vegetables_and_pulses:
-      level: 2
-      farsi_name: "سبزی‌ها و حبوبات"
-      code: {start: 11_700, end: 11_800}
-
-    #                              ## LEVEL 3 ##                              #
-    leafy_or_stem_vegetables:
-      level: 3
-      code: {start: 11_710, end: 11_720}
-
-    #                              ## LEVEL 3 ##                              #
-    fruit_bearing_vegetables:
-      level: 3
-      code: {start: 11_720, end: 11_730}
-
-    #                              ## LEVEL 3 ##                              #
-    root_vegetables:
-      level: 3
-      code: {start: 11_730, end: 11_740}
-
-    #                              ## LEVEL 3 ##                              #
-    other_vegetables:
-      level: 3
-      code: {start: 11_740, end: 11_750}
-
-    #                              ## LEVEL 3 ##                              #
-    prepared_vegetables:
-      level: 3
-      code: {start: 11_750, end: 11_760}
-
-    #                              ## LEVEL 3 ##                              #
-    pulses:
-      level: 3
-      code: {start: 11_760, end: 11_770}
-
-
-    #                            #### LEVEL 2 ####                            #
-    sugar_confectionery_and_desserts:
-      level: 2
-      farsi_name: "قند و شکر، مرباها و شیرینی‌ها"
-      code: {start: 11_800, end: 11_900}
-
-    #                              ## LEVEL 3 ##                              #
-    sugar:
-      level: 3
-      code: {start: 11_810, end: 11_820}
-
-    #                              ## LEVEL 3 ##                              #
-    confectionery_and_desserts:
-      level: 3
-      code: {start: 11_820, end: 11_850}
-
-
-    #                            #### LEVEL 2 ####                            #
-    spices_condiments_and_other_food_products:
-      level: 2
-      farsi_name: "ادویه‌ها، چاشنی‌ها و سایر ترکیبات خوراکی"
-      code: {start: 11_900, end: 12_000}
-
-    #                              ## LEVEL 3 ##                              #
-    spices:
-      level: 3
-      code: {start: 11_910, end: 11_920}
-
-    #                              ## LEVEL 3 ##                              #
-    condiments_and_other_food_products:
-      level: 3
-      code: {start: 11_920, end: 11_950}
-
-
-    #                        ######## LEVEL 1 ########                        #
-    non_alcoholic_beverages:
-      level: 1
-      farsi_name: "نوشیدنی‌های غیر الکلی"
-      code: {start: 12_000, end: 13_000}
-
-
-    #                            #### LEVEL 2 ####                            #
-    tea_coffee_and_cocoa_drinks:
-      level: 2
-      farsi_name: "چای، قهوه و کاکائو"
-      code: {start: 12_100, end: 12_200}
-
-    #                              ## LEVEL 3 ##                              #
-    _tea_coffee_and_cocoa_drinks:
-      level: 3
-      farsi_name: "چای، قهوه و کاکائو"
-      code: {start: 12_110, end: 12_120}
-
-
-    #                            #### LEVEL 2 ####                            #
-    soft_drinks:
-      level: 2
-      farsi_name: "نوشابه‌ها"
-      code: {start: 12_200, end: 12_300}
-
-    #                              ## LEVEL 3 ##                              #
-    _soft_drinks:
-      level: 3
-      farsi_name: "نوشابه‌ها"
-      code: {start: 12_210, end: 12_220}
-
-
-    #                ################ LEVEL 0 ################                #
-    alcoholic_beverages_tobacco_and_norcotics:
-      &original_1383_0_alcoholic_beverages_tobacco_and_norcotics
-      level: 0
-      farsi_name: "نوشیدنی‌های الکلی، تنباکو و مواد مخدر"
-      code: {start: 20_000, end: 30_000}
-
-
-    #                        ######## LEVEL 1 ########                        #
-    alcoholic_beverages:
-      level: 1
-      farsi_name: "نوشیدنی‌های الکلی"
-      code: {start: 21_000, end: 22_000}
-
-
-    #                            #### LEVEL 2 ####                            #
-    _alcoholic_beverages:
-      level: 2
-      farsi_name: "نوشیدنی‌های الکلی"
-      code: {start: 21_100, end: 21_200}
-
-    #                              ## LEVEL 3 ##                              #
-    __alcoholic_beverages:
-      level: 3
-      farsi_name: "نوشیدنی‌های الکلی"
-      code: {start: 21_110, end: 21_120}
-
-
-    #                        ######## LEVEL 1 ########                        #
-    tobacco:
-      level: 1
-      farsi_name: "تنباکو"
-      code: {start: 22_000, end: 23_000}
-
-
-    #                            #### LEVEL 2 ####                            #
-    _tobacco:
-      level: 2
-      farsi_name: "تنباکو"
-      code: {start: 22_100, end: 22_200}
-
-    #                              ## LEVEL 3 ##                              #
-    __tobacco:
-      level: 3
-      farsi_name: "تنباکو"
-      code: {start: 22_110, end: 22_120}
-
-
-    #                        ######## LEVEL 1 ########                        #
-    norcotics:
-      level: 1
-      farsi_name: "مواد مخدر"
-      code: {start: 23_000, end: 24_000}
-
-
-    #                            #### LEVEL 2 ####                            #
-    _norcotics:
-      level: 2
-      farsi_name: "مواد مخدر"
-      code: {start: 23_100, end: 23_200}
-
-    #                              ## LEVEL 3 ##                              #
-    __norcotics:
-      level: 3
-      farsi_name: "مواد مخدر"
-      code: {start: 23_110, end: 23_120}
-
-
-    #                ################ LEVEL 0 ################                #
-    clothing_and_footwear:
-      &original_1383_0_clothing_and_footwear
-      level: 0
-      farsi_name: "پوشاک و کفش"
-      code: {start: 30_000, end: 33_000}
-      # This is an exceptional case due to the non-standard codes at the end  #
-      # of the classification for investment expenses (33_000 - 35_000). As   #
-      # a result, this case does not follow the typical pattern.              #
-
-
-    #                        ######## LEVEL 1 ########                        #
-    clothing:
-      level: 1
-      farsi_name: "پوشاک"
-      code: {start: 31_000, end: 32_000}
-
-
-    #                            #### LEVEL 2 ####                            #
-    clothing_materials:
-      level: 2
-      farsi_name: "مواد پوشاکی"
-      code: {start: 31_100, end: 31_200}
-
-    #                              ## LEVEL 3 ##                              #
-    _clothing_materials:
-      level: 3
-      farsi_name: "انواع پارچه"
-      code: {start: 31_110, end: 31_130}
-
-
-    #                            #### LEVEL 2 ####                            #
-    garments:
-      level: 2
-      farsi_name: "پوشاک"
-      code: {start: 31_200, end: 31_300}
-
-
-    #                            #### LEVEL 2 ####                            #
-    other_articles_of_clothing_and_clothing_accessories:
-      level: 2
-      farsi_name: "سایر انواع پوشاک و لوازم پوشاکی"
-      code: {start: 31_300, end: 31_400}
-
-
-    #                            #### LEVEL 2 ####                            #
-    cleaning_repair_tailoring_and_hire_of_clothing:
-      level: 2
-      farsi_name: "هزینه شستشو، اجرت دوخت، تعمیر و کرایه پوشاک"
-      code: {start: 31_400, end: 31_500}
-
-
-    #                        ######## LEVEL 1 ########                        #
-    footwear:
-      level: 1
-      farsi_name: "کفش"
-      code: {start: 32_000, end: 33_000}
-
-
-    #                            #### LEVEL 2 ####                            #
-    shoes_and_other_footwear:
-      level: 2
-      farsi_name: "انواع کفش"
-      code: {start: 32_100, end: 32_200}
-
-
-    #                            #### LEVEL 2 ####                            #
-    cleaning_repair_and_hire_of_footwear:
-      level: 3
-      farsi_name: "تعمیر و ملزومات کفش"
-      code: {start: 32_100, end: 32_200}
-
-
-    #                ################ LEVEL 0 ################                #
-    housing_water_electricity_gas_and_other_fuels:
-      &original_1383_0_housing_water_electricity_gas_and_other_fuels
-      level: 0
-      farsi_name: ""
-      code: {start: 40_000, end: 50_000}
-
-
-    #                        ######## LEVEL 1 ########                        #
-    actual_rentals_for_housing:
-      &original_1383_0_actual_rentals_for_housing
-      level: 1
-      farsi_name: ""
-      code: {start: 41_000, end: 42_000}
-
-
-    #                        ######## LEVEL 1 ########                        #
-    imputed_rentals_for_housing:
-      &original_1383_0_imputed_rentals_for_housing
-      level: 1
-      farsi_name: ""
-      code: {start: 42_000, end: 43_000}
-
-
-    #                ################ LEVEL 0 ################                #
-    furnishings_household_equipment_and_routine_household_maintenance:
-      &original_1383_0_furnishings_household_equipment_and_routine_household_maintenance
-      level: 0
-      farsi_name: ""
-      code: {start: 50_000, end: 60_000}
-
-
-    #                ################ LEVEL 0 ################                #
-    health:
-      &original_1383_0_health
-      level: 0
-      farsi_name: ""
-      code: {start: 60_000, end: 70_000}
-
-
-    #                ################ LEVEL 0 ################                #
-    transport:
-      &original_1383_0_transport
-      level: 0
-      farsi_name: ""
-      code: {start: 70_000, end: 80_000}
-
-
-    #                ################ LEVEL 0 ################                #
-    information_and_communication:
-      &original_1383_0_information_and_communication
-      level: 0
-      farsi_name: ""
-      code: {start: 80_000, end: 90_000}
-
-
-    #                ################ LEVEL 0 ################                #
-    recreation_sport_and_culture:
-      &original_1383_0_recreation_sport_and_culture
-      level: 0
-      farsi_name: ""
-      code: {start: 90_000, end: 100_000}
-
-
-    #                ################ LEVEL 0 ################                #
-    education_services:
-      &original_1383_0_education_services
-      level: 0
-      farsi_name: ""
-      code: {start: 100_000, end: 110_000}
-
-
-    #                ################ LEVEL 0 ################                #
-    restaurants_and_accommodation_services:
-      &original_1383_0_restaurants_and_accommodation_services
-      level: 0
-      farsi_name: ""
-      code: {start: 110_000, end: 120_000}
-
-
-    #                        ######## LEVEL 1 ########                        #
-    food_and_beverage_serving_services:
-      &original_1383_1_food_and_beverage_serving_services
-      level: 1
-      farsi_name: ""
-      code: {start: 111_000, end: 112_000}
-
-
-    #                            #### LEVEL 2 ####                            #
-    restaurants_cafés_and_the_like:
-      level: 2
-      farsi_name: ""
-      code: {start: 111_100, end: 111_200}
-
-
-    #                              ## LEVEL 3 ##                              #
-    _restaurants_cafés_and_the_like:
-      level: 3
-      farsi_name: ""
-      code: {start: 111_110, end: 111_150}
-
-
-    #                            #### LEVEL 2 ####                            #
-    canteens_cafeterias_and_refectories:
-      level: 2
-      farsi_name: ""
-      code: {start: 111_200, end: 111_300}
-
-
-    #                              ## LEVEL 3 ##                              #
-    _canteens_cafeterias_and_refectories:
-      level: 3
-      farsi_name: ""
-      code: {start: 111_210, end: 111_220}
-
-
-    #                        ######## LEVEL 1 ########                        #
-    accommodation_services:
-      &original_1383_1_accommodation_services
-      level: 1
-      farsi_name: ""
-      code: {start: 112_000, end: 113_000}
-
-
-    #                            #### LEVEL 2 ####                            #
-    _accommodation_services:
-      level: 2
-      farsi_name: ""
-      code: {start: 112_000, end: 112_100}    # Yes! it is true!
-
-
-    #                              ## LEVEL 3 ##                              #
-    __accommodation_services:
-      level: 3
-      farsi_name: ""
-      code: {start: 112_010, end: 112_020}    # Yes! it is true!
-
-
-    #                ################ LEVEL 0 ################                #
-    other_commodities:
-      &original_1383_0_other_commodities
-      level: 0
-      farsi_name: ""
-      code: {start: 120_000, end: 130_000}
-
-
-    #                ################ LEVEL 0 ################                #
-    transfer_payments:
-      &original_1383_0_transfer_payments
-      level: 0
-      farsi_name: ""
-      code: {start: 130_000, end: 140_000}
-
-
-    #                        ######## LEVEL 1 ########                        #
-    _transfer_payments:
-      level: 1
-      farsi_name: ""
-      code: {start: 139_000, end: 140_000}
-
-
-    #                ################ LEVEL 0 ################                #
-
-    investments:
-      level: 0
-      farsi_name: ""
-      code: {start: 33_000, end: 35_000}
-
-
-    #                        ######## LEVEL 1 ########                        #
-    investing_in_construction:
-      level: 1
-      farsi_name: ""
-      code: {start: 33_000, end: 34_000}
-
-
-    #                        ######## LEVEL 1 ########                        #
-    other_investments:
-      level: 1
-      farsi_name: ""
-      code: {start: 34_000, end: 35_000}
-
-
-original:
-  defaults:
-    levels: [2, 3]
-
-  items:
-    1363: *ORIGINAL1363
-    1383: *ORIGINAL1383
-
-
-Food-NonFood:
-  defaults:
-    levels: [1]
-    output_column_names: ["Food-NonFood"]
-    missing_value_replacements: {Food-NonFood: Non-Food}
-
-  items:
-    1383:
-      Food:
-        level: 1
-        farsi_name: "مخارج خوراکی"
-        code:
-          - *original_1383_0_food_and_non_alcoholic_beverages
-          - *original_1383_0_alcoholic_beverages_tobacco_and_norcotics
-          - *original_1383_1_food_and_beverage_serving_services
-      Non-Food:
-        level: 1
-        farsi_name: "مخارج غیر خوراکی"
-
 eyn_energy:
   defaults:
     levels: [1]
@@ -869,7 +61,7 @@ eyn_restaurant:
 eyn_durable4:
   defaults:
     levels: [1]
-    output_column_names: ["Durable_Group"]
+
   items:
     G1:
       level: 1
@@ -1457,58 +649,488 @@ eyn_durable4:
             - 61211
             - 61214
 
+eyn_food:
 
-Imputed_Rent:
   defaults:
     levels: [1]
-    output_column_names: ["Imputed_Rent"]
+    labels:
+      - item_key
+      - calories
+      - protein
+      - vitamin_A
+      - ribloflavin
+      - fe
+      - calcium
+    output_column_names:
+      - food_group
+      - calories
+      - protein
+      - vitamin_A
+      - ribloflavin
+      - fe
+      - calcium
 
   items:
-    Imputed_Rent:
+    Almonds:
       level: 1
-      is_imputed: 1
       code:
-        - 42_111
-        - 42_211
+        1383: 11_667
+      farsi_name: ""
+      calories: 5.79
+      protein: 0.21
+      vitamin_A: 0.01
+      ribloflavin: 0.001
+      fe: 0.002
+      calcium: 1.1
 
-
-Insurance_Benefits:
-  defaults:
-    levels: [1]
-    output_column_names: ["Insurance_Benefits"]
-
-  items:
-    Insurance_Benefits:
+    Beans:
       level: 1
-      is_benefit: 1
       code:
-        - 125_113
-        - 125_115
-        - 125_121
-        - 125_311
-        - 125_313
+        1383: {start: 11_761, end: 11_770}
+      farsi_name: ""
+      calories: 3
+      protein: 0.1
+      vitamin_A: 0.02
+      ribloflavin: 0.0023
+      fe: 0.069
+      calcium: 1.438
 
+    BiscuitsCake:
+      level: 1
+      code:
+        1383: {start: 11_171, end: 11_176}
+      farsi_name: ""
+      calories: 2.57
+      protein: 0.06
+      vitamin_A: 0
+      ribloflavin: 0.00005
+      fe: 0.002
+      calcium: 0.04
 
-###############################################################################
-##          _ _ _   Classification of Individual Consumption   _ _ _         ##
-##                     According to Purpose (COICOP) 2018                    ##
-###############################################################################
-#                                                                             #
-#       COICOP is a classification system developed by the United Nations     #
-#   Statistics Division to categorize individual consumption expenditures     #
-#   and household expenditures based on their purpose. It is widely used as   #
-#   a standard for collecting and analyzing data on household expenditure,    #
-#   providing insights into consumption patterns and changes over time.       #
-#   The system includes 12 major groups and provides a more detailed          #
-#   breakdown of subcategories within each group.                             #
-#                                                                             #
-###############################################################################
+    Bologna:
+      level: 1
+      code:
+        1383: 11_222
+      farsi_name: ""
+      calories: 2.47
+      protein: 0.15
+      vitamin_A: 0
+      ribloflavin: 0.00158
+      fe: 0.013
+      calcium: 0.132
 
-coicop:
-  '01':
-    level: 0
-    description: "Food and Non-Alcoholic Beverages "
-    code_history:
-      1384:
-        code: [10000, 19999]
+    Bread:
+      level: 1
+      code:
+        1383: {start: 11_141, end: 11_154}
+      farsi_name: ""
+      calories: 2.5
+      protein: 0.10125
+      vitamin_A: 0
+      ribloflavin: 0.00042
+      fe: 0.021
+      calcium: 0.517
 
+    CannedMeat:
+      level: 1
+      code: 11_224
+      farsi_name: ""
+      calories: 2.5
+      protein: 0.22
+      vitamin_A: 0
+      ribloflavin: 0.00158
+      fe: 0.013
+      calcium: 0.132
+
+    Cheese:
+      level: 1
+      code: {start: 11_428, end: 11_433}
+      farsi_name: ""
+      calories: 2.5
+      protein: 0.333333333
+      vitamin_A: 1.2
+      ribloflavin: 0.002
+      fe: 0.001
+      calcium: 4.9
+
+    Chicken:
+      level: 1
+      code:
+        1383: {start: 11_231, end: 11_240}
+      farsi_name: ""
+      calories: 2
+      protein: 0.22
+      vitamin_A: 0.74
+      ribloflavin: 0.0093
+      fe: 0.009
+      calcium: 0.12
+
+    chickenbarbecue:
+      level: 1
+      code:
+        1383: {start: 11_244, end:11_248}
+      farsi_name: ""
+      calories: 2.26
+      protein: 0.23
+      vitamin_A: 0.74
+      ribloflavin: 0.0093
+      fe: 0.009
+      calcium: 0.12
+
+    Chickpeas:
+      level: 1
+      code:
+        1383: {start: 11_663, end: 11_667}
+      farsi_name: ""
+      calories: 3.64
+      protein: 0.19
+      vitamin_A: 0.01
+      ribloflavin: 0.001
+      fe: 0.002
+      calcium: 1.1
+
+    Cookie:
+      level: 1
+      code:
+        1383: 11_154
+      farsi_name: ""
+      calories: 5.02
+      protein: 0.03
+      vitamin_A: 0
+      ribloflavin: 0.00005
+      fe: 0.002
+      calcium: 0.04
+
+    Cream:
+      level: 1
+      code: {start: 11_421, end: 11_424}
+      farsi_name: ""
+      calories: 1.96
+      protein: 0.027
+      vitamin_A: 0.44
+      ribloflavin: 0.002
+      fe: 0.001
+      calcium: 1.485
+
+    Curd:
+      level: 1
+      code: {start: 11_433, end: 11_435}
+      farsi_name: ""
+      calories: 0.98
+      protein: 0.11
+      vitamin_A: 0.44
+      ribloflavin: 0.002
+      fe: 0.001
+      calcium: 1.485
+
+    DriedFigs:
+      level: 1
+      code:
+        1383: 11_668
+      farsi_name: ""
+      calories: 2.39
+      protein: 0.03
+      vitamin_A: 0.01
+      ribloflavin: 0.001
+      fe: 0.002
+      calcium: 1.1
+
+    DriedPlums:
+      level: 1
+      code:
+        1383: 11_669
+      farsi_name: ""
+      calories: 2.3
+      protein: 0.02
+      vitamin_A: 0.01
+      ribloflavin: 0.001
+      fe: 0.002
+      calcium: 1.1
+
+    Egg:
+      level: 1
+      code:
+        1383: {start: 11_441, end: 11_444}
+      farsi_name: ""
+      calories: 1.4
+      protein: 0.088235294
+      vitamin_A: 1.65
+      ribloflavin: 0.0114
+      fe: 0.011
+      calcium: 0.42
+
+    ExtraVegetables:
+      level: 1
+      code:
+        1383: {start: 11_751, end: 11_755}
+      farsi_name: ""
+      calories: 0.28
+      protein: 0.04
+      vitamin_A: 1.71
+      ribloflavin: 0.0006
+      fe: 0.004
+      calcium: 0.414
+
+    Fish:
+      level: 1
+      code:
+        1383: {start: 11_311, end: 11_322}
+      farsi_name: ""
+      calories: 1
+      protein: 0.22
+      vitamin_A: 0.3
+      ribloflavin: 0.004
+      fe: 0.009
+      calcium: 0.15
+
+    Fruit:
+      level: 1
+      code: 
+        1383: {start: 11_611, end: 11_644}
+      farsi_name: ""
+      calories: 0.5
+      protein: 0
+      vitamin_A: 0.42
+      ribloflavin: 0.00025
+      fe: 0.005
+      calcium: 0.228
+
+    hamburger:
+      level: 1
+      code:
+        1383: 11_241
+      farsi_name: ""
+      calories: 3.32
+      protein: 0.14
+      vitamin_A: 0
+      ribloflavin: 0.00158
+      fe: 0.013
+      calcium: 0.132
+
+    Ketchup:
+      level: 1
+      code:
+        1383: {start: 11_921, end: 11_923}
+      farsi_name: ""
+      calories: 1.12
+      protein: 0.01
+      vitamin_A: 0
+      ribloflavin: 0
+      fe: 0
+      calcium: 0
+
+    MayonnaiseSauce:
+      level: 1
+      code:
+        1383: 11_924
+      farsi_name: ""
+      calories: 3.9
+      protein: 0.01
+      vitamin_A: 0
+      ribloflavin: 0
+      fe: 0
+      calcium: 0
+
+    Meat:
+      level: 1
+      code:
+        1383: {start: 11_211, end: 11_222}
+      farsi_name: ""
+      calories: 2.5
+      protein: 0.225
+      vitamin_A: 0
+      ribloflavin: 0.00158
+      fe: 0.013
+      calcium: 0.132
+
+    Milk:
+      level: 1
+      code:
+        1383: {start: 11_411, end: 11_415}
+      farsi_name: ""
+      calories: 0.6
+      protein: 0.032142857
+      vitamin_A: 0.44
+      ribloflavin: 0.002
+      fe: 0.001
+      calcium: 1.485
+
+    Nuts:
+      level: 1
+      code:
+        1383: {start: 11_651, end: 11_663}
+      farsi_name: ""
+      calories: 6
+      protein: 0.2
+      vitamin_A: 0.01
+      ribloflavin: 0.001
+      fe: 0.002
+      calcium: 1.1
+
+    Oil:
+      level: 1
+      code:
+        1383: {start: 11_511, end: 11_534}
+      farsi_name: ""
+      calories: 8
+      protein: 0
+      vitamin_A: 0
+      ribloflavin: 0
+      fe: 0
+      calcium: 0
+
+    Olives:
+      level: 1
+      code:
+        1383: {start: 11_741, end: 11_743}
+      farsi_name: ""
+      calories: 1.3
+      protein: 0.01
+      vitamin_A: 1.71
+      ribloflavin: 0.0006
+      fe: 0.008
+      calcium: 0.414
+
+    Onion:
+      level: 1
+      code:
+        1383: {start: 11_732, end: 11_736}
+      farsi_name: ""
+      calories: 0.04
+      protein: 0.01
+      vitamin_A: 1.71
+      ribloflavin: 0.0006
+      fe: 0.008
+      calcium: 0.414
+
+    Pickle:
+      level: 1
+      code:
+        1383: {start: 11_925, end: 11_935}
+      farsi_name: ""
+      calories: 0.01
+      protein: 0.003
+      vitamin_A: 0.42
+      ribloflavin: 0.00025
+      fe: 0.005
+      calcium: 0.228
+
+    Potato:
+      level: 1
+      code:
+        1383: 11_731
+      farsi_name: ""
+      calories: 0.9
+      protein: 0.03
+      vitamin_A: 0.02
+      ribloflavin: 0.00029
+      fe: 0.004
+      calcium: 0.072
+
+    Rice:
+      level: 1
+      code:
+        1383: {start: 11_111, end: 11_119}
+      farsi_name: ""
+      calories: 3.56
+      protein: 0.09
+      vitamin_A: 0
+      ribloflavin: 0.00032
+      fe: 0.008
+      calcium: 0.076
+
+    Sausage:
+      level: 1
+      code:
+        1383: 11_223
+      farsi_name: ""
+      calories: 3.46
+      protein: 0.14
+      vitamin_A: 0
+      ribloflavin: 0.00158
+      fe: 0.013
+      calcium: 0.132
+
+    Spaghetti:
+      level: 1
+      code: 
+        1383: {start: 11_161, end: 11_167}
+      farsi_name: ""
+      calories: 3.6
+      protein: 0.064285714
+      vitamin_A: 0
+      ribloflavin: 0.0005
+      fe: 0.015
+      calcium: 0.27
+
+    Spices:
+      level: 1
+      code:
+        1383: {start: 11_913, end: 11_920}
+      farsi_name: ""
+      calories: 2.51
+      protein: 0.01
+      vitamin_A: 1.71
+      ribloflavin: 0.0006
+      fe: 0.008
+      calcium: 0.414
+
+    Sugar:
+      level: 1
+      code:
+        1383: {start: 11_811, end: 11_846}
+      farsi_name: ""
+      calories: 4
+      protein: 0.03
+      vitamin_A: 0
+      ribloflavin: 0.00005
+      fe: 0.002
+      calcium: 0.04
+
+    Tea:
+      level: 1
+      code:
+        1383: {start: 12_111, end: 12_115}
+      farsi_name: ""
+      calories: 0.01
+      protein: 0.001
+      vitamin_A: 1.71
+      ribloflavin: 0.0006
+      fe: 0.008
+      calcium: 0.414
+
+    Vegetables:
+      level: 1
+      code:
+        1383: {start: 11_711, end: 11_728}
+      farsi_name: ""
+      calories: 0.5
+      protein: 0.04
+      vitamin_A: 1.71
+      ribloflavin: 0.0006
+      fe: 0.008
+      calcium: 0.414
+
+    Wheat:
+      level: 1
+      code:
+        1383: {start: 11_121, end: 11_126}
+      farsi_name: ""
+      calories: 3.4
+      protein: 0.13
+      vitamin_A: 0
+      ribloflavin: 0.00042
+      fe: 0.021
+      calcium: 0.517
+
+    Yogurt:
+      level: 1
+      code: 
+        1383: {start: 11_424, end: 11_427}
+      farsi_name: ""
+      calories: 1.2
+      protein: 0.04
+      vitamin_A: 0.02
+      ribloflavin: 0.002
+      fe: 0.001
+      calcium: 1.1

@@ -24,7 +24,7 @@ household_information:
       - Year
       - ID
       - Season
-      - Weight	
+      - Weight
 
 members_education:
   table_list:
@@ -110,6 +110,7 @@ food:
 
   views:
    - original
+   - eyn_food
 
 
 
