@@ -21,7 +21,14 @@ def timing(f):
 @timing
 def read_all_years(element, name, metadata):
     years_tuple = metadata["analysis_years"]
-    years = list(range(years_tuple[0], years_tuple[1] + 1))
+    # if years_tuple[0] == years_tuple[1]:
+    #     df = pyreadr.read_r(
+    #         Path(metadata["rdata_path"]) / f"Y{years_tuple[0]}{name}.rda"
+    #     )[element]
+    if years_tuple[0] == years_tuple[1]:
+        years = [years_tuple[0]]
+    else:
+        years = list(range(years_tuple[0], years_tuple[1] + 1))
 
     all_df = []
     for year in years:
