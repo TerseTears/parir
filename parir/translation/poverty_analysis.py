@@ -9,41 +9,40 @@ from ipdb import set_trace
 
 
 @timing
-def merge_with_engel(engelid, metadata):
-    # BigEngelTable = pyreadr.read_r(Path(metadata["rdata_path"] / "BigEngelTable.rda"))[
-    #     "BigEngelTable"
-    # ]
-    # BigEngelTable["cluster3"] = BigEngelTable["cluster3"].astype(int)
-    # BigEngelTable = BigEngelTable[
-    #     [
-    #         "cluster3",
-    #         "Region",
-    #         "CMPovLine",
-    #         "PovertyLine",
-    #         "Engel",
-    #         "ModifiedEngel",
-    #         "OER",
-    #         "ModOER",
-    #         "DSC",
-    #         "ModDSC",
-    #     ]
-    # ]
+def merge_with_engel(MD_food, engelid):
+    engelid["cluster3"] = engelid["cluster3"].astype(int)
+    engelid = engelid[
+        [
+            "cluster3",
+            "Region",
+            "CMPovLine",
+            "PovertyLine",
+            "Engel",
+            "ModifiedEngel",
+            "OER",
+            "ModOER",
+            "DSC",
+            "ModDSC",
+        ]
+    ]
+    MD_final = pd.merge(MD_food, engelid, on=["cluster3", "Region"], how="left")
 
-    MD = read_all_years("MD", "FinalPoor", metadata)
-    MD["cluster3"] = MD["cluster3"].astype(int)
 
-    join_cols = engelid.columns.difference(MD.columns).tolist()
-    join_cols = join_cols + ["cluster3", "Region"]
+    MD_final["cluster3"] = MD_final["cluster3"].astype(int)
 
-    return pd.merge(MD, engelid[join_cols], on=["cluster3", "Region"], how="left")
+    MD_final["FinalPoor"] = 0
+    MD_final["FinalPoor"] = MD_final["FinalPoor"].mask(
+        MD_final["Total_Consumption_Month_per"] < MD_final["CMPovLine"], 1
+    )
 
+    return MD_final
 
 def modified_index(df, column2replace, column1, column2, column3):
     df[column2replace] = (df[column1] + df[column2] + df[column3]) / 3
-    df[column2replace] = df[column2replace].where(
+    df[column2replace] = df[column2replace].mask(
         df[column2].isna() & df[column3].isna(), df[column1]
     )
-    df[column2replace] = df[column2replace].where(
+    df[column2replace] = df[column2replace].mask(
         ~df["EngelX"].isna() & df["EngelX2"].isna(), (df[column1] + df[column2]) / 2
     )
     return df
@@ -81,7 +80,7 @@ def engel_computation(food_poor):
                 {
                     "Engel": weighted_average(x, "EngelH"),
                     "OER": weighted_average(x, "OER_H"),
-                    "DSC": weighted_average(x, "DSC"),
+                    "DSC": weighted_average(x, "DSC_H"),
                     "FPLine": np.mean(x.FPLine),
                 }
             )
