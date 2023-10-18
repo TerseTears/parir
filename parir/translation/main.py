@@ -4,16 +4,21 @@ from pathlib import Path
 import pyreadr
 import pandas as pd
 from parir.utils import read_all_years
-from parir.translation.postdata_prep import reweight_pop
+from parir.translation.postdata_prep import reweight_pop, food_poor_computation
 from parir.translation.poverty_analysis import merge_with_engel, engel_computation
 from parir.translation.poor_analysis import poor_stats, poor_comparison
+import numpy as np
+np.seterr(divide='ignore', invalid='ignore')
+
 metadata = {
-    'analysis_years': (88, 92),
-    'rdata_path': Path("D:/IRHEIS/DataProcessed")
+    'analysis_years': (92, 92),
+    'rdata_path': Path("D:/IRHEIS/DataProcessed"),
+    'rresult_path': Path("D:/IRHEIS/DataResults")
             }
 # 166
-MD_inital = read_all_years("MD", "InitialPoorClustered", metadata)
-res = reweight_pop(MD_inital)
+MD_initial = read_all_years("MD", "InitialPoorClustered", metadata)
+res = food_poor_computation(MD_initial, metadata)
+
 
 # 167
 MD_food = read_all_years("MD", "FoodPoor", metadata)
