@@ -10,7 +10,7 @@ from ipdb import set_trace
 
 @timing
 def merge_with_engel(MD_food, engelid):
-    engelid["cluster3"] = engelid["cluster3"].astype(int)
+    engelid["cluster3"] = engelid["cluster3"].astype("int64")
     engelid = engelid[
         [
             "cluster3",
@@ -28,7 +28,7 @@ def merge_with_engel(MD_food, engelid):
     MD_final = pd.merge(MD_food, engelid, on=["cluster3", "Region"], how="left")
 
 
-    MD_final["cluster3"] = MD_final["cluster3"].astype(int)
+    MD_final["cluster3"] = MD_final["cluster3"].astype("int64")
 
     MD_final["FinalPoor"] = 0
     MD_final["FinalPoor"] = MD_final["FinalPoor"].mask(
