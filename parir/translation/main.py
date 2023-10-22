@@ -4,6 +4,7 @@ from pathlib import Path
 import pyreadr
 import pandas as pd
 from parir.utils import read_all_years
+from parir.translation.basket_analysis import standard_basket
 from parir.translation.postdata_prep import reweight_pop, food_poor_computation
 from parir.translation.poverty_analysis import merge_with_engel, engel_computation
 from parir.translation.poor_analysis import poor_stats, poor_comparison
@@ -15,11 +16,13 @@ metadata = {
     'rdata_path': Path("D:/IRHEIS/DataProcessed"),
     'rresult_path': Path("D:/IRHEIS/DataResults")
             }
+
+# 166-pre
+result = standard_basket(metadata)
+
 # 166
 MD_initial = read_all_years("MD", "InitialPoorClustered", metadata)
 res = food_poor_computation(MD_initial, metadata)
-
-
 # 167
 MD_food = read_all_years("MD", "FoodPoor", metadata)
 engelid = engel_computation(MD_food)
