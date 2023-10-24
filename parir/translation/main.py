@@ -12,22 +12,21 @@ import numpy as np
 np.seterr(divide='ignore', invalid='ignore')
 
 metadata = {
-    'analysis_years': (92, 92),
+    'analysis_years': (85, 85),
     'rdata_path': Path("D:/IRHEIS/DataProcessed"),
     'rresult_path': Path("D:/IRHEIS/DataResults")
             }
 
 # 166-pre
-result = standard_basket(metadata)
+basket_std = standard_basket(metadata)
 
 # 166
 MD_initial = read_all_years("MD", "InitialPoorClustered", metadata)
-res = food_poor_computation(MD_initial, metadata)
+MD_food_poor = food_poor_computation(MD_initial, basket_std, metadata)
 # 167
-MD_food = read_all_years("MD", "FoodPoor", metadata)
-engelid = engel_computation(MD_food)
+engelid = engel_computation(MD_food_poor)
 # 168
-MD_final = merge_with_engel(MD_food, engelid)
+MD_final = merge_with_engel(MD_food_poor, engelid)
 # 169-step9-PovertyStats.R
 poor_stats(MD_final, "Region")
 # 170-step10-PoorStats.R

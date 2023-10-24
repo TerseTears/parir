@@ -7,10 +7,12 @@ import pyreadr
 from pathlib import Path
 from parir.utils import read_all_years, timing
 from ipdb import set_trace
+import copy
 
 
 def standard_basket(metadata, pct_deviation=25):
     # 95 is the base year
+    metadata = copy.copy(metadata)
     metadata["analysis_years"] = (95, 95)
     initial_clustered = read_all_years("MD", "InitialPoorClustered", metadata)
     food_data = read_all_years("BigFData", "BigFDataTotalNutrition", metadata)
