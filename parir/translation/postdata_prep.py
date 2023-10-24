@@ -75,7 +75,7 @@ def food_poor_computation(initial_poor, basket_baseyear, metadata):
         .apply(
             lambda x: pd.Series(
                 {
-                    "MedPrice": weighted_median(x.Price.values, x.FGramsWeight.values),
+                    "MedPrice": weighted_median(x, "Price", "FGramsWeight"),
                     "MeanPrice": weighted_average(x, "Price", "FGramsWeight"),
                 }
             )

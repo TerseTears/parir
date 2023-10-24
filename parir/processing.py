@@ -10,7 +10,9 @@ def weighted_average(df, column, weight_column="Weight"):
     return np.ma.average(masked_data, weights=df[weight_column])
 
 
-def weighted_median(values, weights):
+def weighted_median(df, column, weight_column="Weight"):
+    values = df[column].values
+    weights = df[weight_column].values
     i = np.argsort(values)
     c = np.cumsum(weights[i])
     return values[i[np.searchsorted(c, 0.5 * c[-1])]]
