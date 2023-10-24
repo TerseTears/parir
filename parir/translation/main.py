@@ -4,6 +4,7 @@ from pathlib import Path
 import pyreadr
 import pandas as pd
 from parir.utils import read_all_years
+from parir.translation.iterative_deciles import iterative_decile
 from parir.translation.basket_analysis import standard_basket
 from parir.translation.postdata_prep import reweight_pop, food_poor_computation
 from parir.translation.poverty_analysis import merge_with_engel, engel_computation
@@ -12,10 +13,16 @@ import numpy as np
 np.seterr(divide='ignore', invalid='ignore')
 
 metadata = {
-    'analysis_years': (85, 85),
+    'analysis_years': (83, 83),
     'rdata_path': Path("D:/IRHEIS/DataProcessed"),
     'rresult_path': Path("D:/IRHEIS/DataResults")
             }
+
+# 164
+MD = read_all_years("MD", "Merged4CBN3", metadata)
+HHHouse = read_all_years("HHHouseProperties", "HHHouseProperties", metadata)
+res = iterative_decile(MD, HHHouse, metadata)
+
 
 # 166-pre
 basket_std = standard_basket(metadata)

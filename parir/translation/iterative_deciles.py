@@ -7,7 +7,61 @@ import pyreadr
 from pathlib import Path
 from parir.utils import read_all_years, timing
 from ipdb import set_trace
-import math
+
+
+def do_deciling(
+    household_data, price_index=None, order_by="Consumption", size_name="_per"
+):
+    if price_index is not None:
+        if "PriceIndex" in household_data.columns:
+            household_data = household_data.drop(columns=["PriceIndex"])
+        household_data = household_data.merge(
+            price_index, on=["Region", "NewArea_Name"]
+        )
+        varname0 = f"Total_{order_by}_Month{size_name}"
+        varname = f"{varname0}_PriceAdj"
+        household_data[varname] = (
+            household_data[varname0] / household_data["PriceIndex"]
+        )
+    else:
+        varname = f"Total_{order_by}_Month{size_name}"
+
+    household_data[order_by] = household_data[varname]
+    household_data = household_data.sort_values(by=order_by)
+    household_data["WeightSize"] = household_data["Weight"] * household_data["Size"]
+    household_data["cumul_rel_weight"] = (
+        household_data["WeightSize"].cumsum() / household_data["WeightSize"].sum()
+    )
+    xr25th = household_data.groupby(["Region", "NewArea_Name"])[order_by].agg(
+        xr25th=lambda x: x.iloc[24]
+    )
+    household_data = household_data.merge(
+        xr25th, left_on=["Region", "NewArea_Name"], right_index=True
+    )
+    household_data["First25"] = np.where(household_data["xr25th"], 1, 0)
+    household_data["Decile"] = pd.cut(
+        household_data["cumul_rel_weight"],
+        bins=np.arange(0, 1.1, 0.1),
+        labels=range(1, 11),
+    )
+    household_data["Percentile"] = pd.cut(
+        household_data["cumul_rel_weight"],
+        bins=np.arange(0, 1.01, 0.01),
+        labels=range(1, 101),
+    )
+    return household_data[["HHID", "Decile", "Percentile", "First25"]]
+
+
+# if(!is.null(PriceIndexDT)){
+#   if("PriceIndex" %in% names(HHDT)) HHDT <- HHDT[,PriceIndex:=NULL]
+#   HHDT <- merge(HHDT,PriceIndexDT,by=c("Region","NewArea_Name"))
+#   PriceAdj <- "PriceAdj"
+#   varname0 <- paste0("Total_",OrderingVar,"_Month",Size)
+#   varname <- paste0("Total_",OrderingVar,"_Month",Size,"_PriceAdj")
+#   HHDT <- HHDT[,(varname):=get(varname0)/PriceIndex]
+# }else{
+#   varname <- paste0("Total_",OrderingVar,"_Month",Size)
+# }
 
 
 def tornqvist_index(data_df):
@@ -43,7 +97,6 @@ def tornqvist_index(data_df):
         .reset_index()
         .dropna()
     )
-    set_trace()
 
     index_df = index_df.eval(
         """
@@ -65,17 +118,17 @@ def tornqvist_index(data_df):
     )
     # TornqvistIndex
     index_df["PriceIndex"] = index_df.apply(
-        lambda x: math.exp(
-            (wk1 + x["wj1"]) / 2
-            * math.log(x["pj1"] / pk1)
-            + (wk2 + x["wj2"]) / 2 * math.log(x["pj2"] / pk2)
-        )
-    , axis=1)
+        lambda x: np.exp(
+            (wk1 + x["wj1"]) / 2 * np.log(x["pj1"] / pk1)
+            + (wk2 + x["wj2"]) / 2 * np.log(x["pj2"] / pk2)
+        ),
+        axis=1,
+    )
     index_df = index_df[["Region", "NewArea_Name", "PriceIndex"]]
     return index_df
 
 
-def iterative_decile(merged_data, household_data):
+def iterative_decile(merged_data, household_data, metadata):
     expenditure_cols = [
         "OriginalFoodExpenditure",
         "FoodOtherExpenditure",
@@ -133,4 +186,11 @@ def iterative_decile(merged_data, household_data):
 
     price_df = tornqvist_index(smerged_data)
 
-    return price_df
+    gdc = do_deciling(smerged_data, price_df, "Consumption", "_per")
+    gdc = gdc.rename(columns={"Decile": "Decil_Gen_Cons_PAdj", "Precentile": "Pctl_Gen_Cons_PAdj"})
+    gdx = do_deciling(smerged_data, price_df, "Expediture", "_per")
+    gdx = gdx.rename(columns={"Decile": "Decil_Gen_Exp_PAdj", "Precentile": "Pctl_Gen_Exp_PAdj"})
+
+    smerged_data = smerged_data.merge(gdc).merge(gdx)
+
+    return smerged_data
